@@ -1,0 +1,6 @@
+@BaseAddress=http://localhost:8000
+
+### Convert
+GET {{BaseAddress}}/convert?from_currency=USD&to_currency=INR&amount=100
+Accept: application/json
+
