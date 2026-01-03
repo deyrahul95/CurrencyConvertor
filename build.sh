@@ -8,6 +8,16 @@ CONTAINER_NAME="currency-convertor-app"
 PORT_MAPPING="8000:8000"
 # ==================
 
+echo "🐍 Running tests with uv before building Docker image..."
+
+# Run tests using uv
+if ! uv run pytest; then
+  echo "❌ Tests failed! Aborting Docker build."
+  exit 1
+fi
+
+echo "✅ All tests passed. Proceeding with Docker build..."
+
 echo "🔍 Checking for existing container..."
 
 if docker ps -a --format '{{.Names}}' | grep -Eq "^${CONTAINER_NAME}\$"; then
