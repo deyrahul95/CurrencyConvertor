@@ -39,7 +39,7 @@ echo "🐳 Building new image: ${IMAGE_NAME}"
 docker build -t "${IMAGE_NAME}" .
 
 echo "🚀 Running new container: ${CONTAINER_NAME}"
-docker run -d --rm \
+docker run -d \
   --name "${CONTAINER_NAME}" \
   -p ${PORT_MAPPING} \
   "${IMAGE_NAME}"

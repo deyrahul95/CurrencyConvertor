@@ -8,11 +8,20 @@ from main import (
 client = TestClient(app)
 
 
+def test_status_endpoint():
+    response = client.get("/status")
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == 200
+    assert data["message"] == "API is healthy!"
+
+
 # Test data
 @pytest.mark.parametrize(
     "from_currency, to_currency, amount, expected_rate",
     [
-        ("USD", "EUR", 10, 0.9),  
+        ("USD", "EUR", 10, 0.9),
         ("EUR", "USD", 5, 1.1),
         ("usd", "eur", 2.5, 0.9),
     ],
