@@ -16,11 +16,14 @@ RATES = {
 }
 
 
+@app.get("/status")
+def health_check() -> dict:
+    return {"status": 200, "message": "API is healthy!"}
+
+
 @app.get("/convert")
 def convert(from_currency: str, to_currency: str, amount: float) -> dict:
     key = (from_currency.upper(), to_currency.upper())
     rate: Any = RATES.get(key)
     logging.info(f"Using exchange rate: {rate}")
     return {"amount": amount, "rate": rate, "result": amount * rate}
-
-

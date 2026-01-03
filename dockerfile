@@ -5,6 +5,7 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 
-COPY . .
+COPY .python-version ./
+COPY src ./
 
 CMD ["uv", "run", "--", "fastapi", "run", "main.py"]

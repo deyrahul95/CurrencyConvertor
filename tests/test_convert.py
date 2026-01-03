@@ -1,5 +1,3 @@
-# test_convert.py
-
 import pytest
 from fastapi.testclient import TestClient
 from main import (
@@ -10,13 +8,13 @@ from main import (
 client = TestClient(app)
 
 
-# Example test data
+# Test data
 @pytest.mark.parametrize(
     "from_currency, to_currency, amount, expected_rate",
     [
-        ("USD", "EUR", 10, 0.9),  # assuming RATES[("USD", "EUR")] == 0.9
-        ("EUR", "USD", 5, 1.1),  # assuming RATES[("EUR", "USD")] == 1.1
-        ("usd", "eur", 2.5, 0.9),  # test lowercase input
+        ("USD", "EUR", 10, 0.9),  
+        ("EUR", "USD", 5, 1.1),
+        ("usd", "eur", 2.5, 0.9),
     ],
 )
 def test_convert_endpoint(from_currency, to_currency, amount, expected_rate):

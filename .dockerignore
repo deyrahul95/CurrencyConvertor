@@ -1,9 +1,15 @@
 .git
 .gitignore
+.github
 
 .venv
 .env
+
+.vscode
+
 __pycache__
+.pytest_cache
+
 
 README.md
 rest.http
