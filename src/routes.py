@@ -1,11 +1,20 @@
 from decimal import Decimal
 from fastapi import APIRouter, Depends, Query
+from sqlalchemy.orm import Session
 
 
+from db.database import get_db
+from models.conversion_request import ConversionRequest
+from models.conversion_result import ConversionResult
 from models.convert_response import ConvertResponse
+from services.exchange_rate_service import ExchangeRateService
 from services.exchange_service import ExchangeService
 
 router = APIRouter()
+
+
+def get_exchange_rate_service(db: Session = Depends(get_db)):
+    yield ExchangeRateService(db)
 
 
 @router.get("/status")
@@ -22,3 +31,11 @@ def convert(
 ) -> ConvertResponse:
     result = service.convert(from_currency, to_currency, amount)
     return ConvertResponse(amount=amount, result=result)
+
+
+@router.post("/convert", response_model=ConversionResult)
+def convert_post(
+    body: ConversionRequest,
+    service: ExchangeRateService = Depends(get_exchange_rate_service),
+) -> ConversionResult:
+    return service.convert(body)

@@ -5,7 +5,18 @@ GET {{BaseAddress}}/status
 Accept: application/json
 
 
-### Convert
+### GET Convert
 GET {{BaseAddress}}/convert?from_currency=USD&to_currency=EUR&amount=100
 Accept: application/json
 
+
+### POST Convert 
+POST {{BaseAddress}}/convert
+Accept: application/json
+Content-Type: application/json
+
+{
+  "from_currency": "USD",
+  "to_currency": "JPY",
+  "amount": 5
+}

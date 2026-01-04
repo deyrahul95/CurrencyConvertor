@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 from sqlalchemy import Integer, String
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from decimal import Decimal
@@ -29,9 +28,3 @@ class ConversionRate(Base):
     to_currency: Mapped[str] = mapped_column(String(length=3))
     rate: Mapped[Decimal] = mapped_column()
     timestamp: Mapped[datetime] = mapped_column(default=datetime.now)
-
-
-class ConversionResult(BaseModel):
-    amount: Decimal
-    result: Decimal
-    rate: Decimal
