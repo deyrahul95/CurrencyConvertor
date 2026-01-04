@@ -2,8 +2,8 @@ from decimal import Decimal
 from fastapi import APIRouter, Depends, Query
 
 
-from convert_response import ConvertResponse
-from exchange_service import ExchangeService
+from models.convert_response import ConvertResponse
+from services.exchange_service import ExchangeService
 
 router = APIRouter()
 

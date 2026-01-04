@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../s
 
 
 from main import app as real_app
-from exchange_service import ExchangeService as RealExchangeService
+from services.exchange_service import ExchangeService as RealExchangeService
 
 
 @pytest.fixture(scope="session")

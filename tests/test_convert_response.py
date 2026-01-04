@@ -1,7 +1,7 @@
 import pytest
 from decimal import Decimal
 from pydantic import ValidationError
-from convert_response import ConvertResponse
+from models.convert_response import ConvertResponse
 
 
 def test_valid_conversion():
