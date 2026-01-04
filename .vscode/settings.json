@@ -10,6 +10,7 @@
         "fastapi",
         "pyproject",
         "pytest",
-        "sessionmaker"
+        "sessionmaker",
+        "slowapi"
     ]
 }
