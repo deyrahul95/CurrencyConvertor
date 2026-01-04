@@ -3,7 +3,7 @@ import logging
 from fastapi import HTTPException
 
 
-class ExchangeRateService:
+class ExchangeService:
     __RATES: dict[tuple[str, str], Decimal] = {
         ("USD", "EUR"): Decimal(0.924),
         ("EUR", "USD"): Decimal(1.082),

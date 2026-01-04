@@ -4,7 +4,7 @@ import logging
 
 
 from convert_response import ConvertResponse
-from exchange_rate_service import ExchangeRateService
+from exchange_service import ExchangeService
 
 logging.basicConfig(level=logging.INFO)
 
@@ -21,7 +21,7 @@ def convert(
     from_currency: str = Query(str, min_length=3, max_length=3),
     to_currency: str = Query(str, min_length=3, max_length=3),
     amount: Decimal = Query(Decimal, decimal_places=2, gt=0),
-    service: ExchangeRateService = Depends(ExchangeRateService),
+    service: ExchangeService = Depends(ExchangeService),
 ) -> ConvertResponse:
     result = service.convert(from_currency, to_currency, amount)
     return ConvertResponse(amount=amount, result=result)
