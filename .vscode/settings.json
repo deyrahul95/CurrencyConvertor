@@ -3,6 +3,7 @@
         "./src"
     ],
     "cSpell.words": [
+        "addfinalizer",
         "currencyconvertor",
         "excinfo",
         "fastapi",
