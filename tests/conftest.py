@@ -8,8 +8,8 @@ from typing import Callable
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
 
 
-# Import the real app and ExchangeRateService from the module under test.
-from main import app as real_app, ExchangeService as RealExchangeRateService
+from main import app as real_app
+from exchange_service import ExchangeService as RealExchangeService
 
 
 @pytest.fixture(scope="session")
@@ -43,11 +43,11 @@ def mock_service_factory(
                 return convert_fn(from_currency, to_currency, amount)
 
         # Patch the dependency in the FastAPI app so Depends(ExchangeRateService) yields MockService
-        real_app.dependency_overrides[RealExchangeRateService] = lambda: MockService()
+        real_app.dependency_overrides[RealExchangeService] = lambda: MockService()
 
         # Ensure teardown after test runs
         def _teardown():
-            real_app.dependency_overrides.pop(RealExchangeRateService, None)
+            real_app.dependency_overrides.pop(RealExchangeService, None)
 
         request.addfinalizer(_teardown)
 
