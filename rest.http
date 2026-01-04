@@ -1,7 +1,7 @@
 @BaseAddress=http://localhost:8000
 
 ### Health Check
-GET {{BaseAddress}}/status
+GET {{BaseAddress}}/health
 Accept: application/json
 
 

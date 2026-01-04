@@ -17,8 +17,8 @@ def get_exchange_rate_service(db: Session = Depends(get_db)):
     yield ExchangeRateService(db)
 
 
-@router.get("/status")
-def health_check() -> dict:
+@router.get("/health")
+def health() -> dict:
     return {"status": 200, "message": "API is healthy!"}
 
 
