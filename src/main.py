@@ -9,13 +9,13 @@ logging.basicConfig(level=logging.INFO)
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(_: FastAPI):
     # startup
     init_db_and_seed()
     yield
     # shutdown
 
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 app.include_router(router=router)
