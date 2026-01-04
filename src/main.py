@@ -1,5 +1,5 @@
 from decimal import Decimal
-from fastapi import FastAPI, Depends, Query
+from fastapi import FastAPI, Depends, Query, status
 import logging
 
 
@@ -16,7 +16,7 @@ def health_check() -> dict:
     return {"status": 200, "message": "API is healthy!"}
 
 
-@app.get("/convert")
+@app.get("/convert", status_code=status.HTTP_200_OK, response_model=ConvertResponse)
 def convert(
     from_currency: str = Query(str, min_length=3, max_length=3),
     to_currency: str = Query(str, min_length=3, max_length=3),
