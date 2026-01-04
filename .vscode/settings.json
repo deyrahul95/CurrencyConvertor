@@ -4,6 +4,7 @@
     ],
     "cSpell.words": [
         "currencyconvertor",
+        "excinfo",
         "fastapi",
         "pyproject",
         "pytest"
