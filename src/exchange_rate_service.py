@@ -28,4 +28,4 @@ class ExchangeRateService:
             )
 
         logging.info(f"Using exchange rate: {rate}")
-        return amount * rate
+        return round(amount * rate, 2)
