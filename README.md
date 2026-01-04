@@ -49,8 +49,8 @@ curl "http://localhost:8000/convert?from_currency=USD&to_currency=EUR&amount=100
 
 ```bash
 {
-  "amount": 100,
-  "rate": 0.9,
-  "result": 90
+  "amount": "100",
+  "result": "92.40",
+  "rate": "0.92"
 }
 ```
