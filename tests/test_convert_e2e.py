@@ -3,8 +3,10 @@ from http import HTTPStatus
 from fastapi.testclient import TestClient
 
 from main import app
+from db.database import init_db_and_seed
 
 
+init_db_and_seed()
 client = TestClient(app)
 
 

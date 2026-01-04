@@ -23,9 +23,7 @@ def client() -> TestClient:
 
 
 @pytest.fixture
-def mock_service_factory(
-    request, monkeypatch
-) -> Callable[[Callable[..., Decimal]], None]:
+def mock_service_factory(request) -> Callable[[Callable[..., Decimal]], None]:
     """
     Factory fixture: given a function convert_fn(from_currency, to_currency, amount)
     it will patch the ExchangeRateService dependency used by the app so the endpoint
